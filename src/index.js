@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 const initialState = 100;
 // creating context
 const context = createContext({ state: 40 }); //  { state: 40 } is the default value if provider is missing
-
+const nameCtx = createContext(null);
 // 1. Creating - createContext
 // 2. Publisher - provider - context.Provider
 // 3. Subscriber - useContext - useContext(context)
@@ -54,7 +54,7 @@ const MyGrandChild = () => {
 //   );
 // };
 
-// End goal
+// End goal - ideal scenario
 const MyChild = () => {
   return (
     <div>
@@ -81,11 +81,13 @@ const App = () => {
   // Provider (prodvies) - publisher - value - data
   return (
     // {/* value={anyDatatype} */}
-    <context.Provider value={obj}>
-      <div>
-        <MyChild />
-      </div>
-    </context.Provider>
+    <nameCtx.Provider value="Gowtham">
+      <context.Provider value={obj}>
+        <div>
+          <MyChild />
+        </div>
+      </context.Provider>
+    </nameCtx.Provider>
   );
 };
 
